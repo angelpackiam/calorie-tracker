@@ -43,7 +43,7 @@ export class AppComponent {
   calorieConsumed: number = 0;
   mealsList: Meal[] = [];
   mealSections: MealSection[] = [];
-  sectionList: string[] = ['Breakfast', 'Morning Snack', 'Lunch', 'Evening Snack', 'Dinner'];
+  sectionList: string[] = ['Breakfast', 'Morning Snack', 'Lunch', 'Evening Snacks', 'Dinner'];
   constructor(private readonly service: CalorieTrackerService) {
     this.api = new CalorieTrackerService();
   }
@@ -64,7 +64,7 @@ export class AppComponent {
         mealCalorieLimit: +this[limit],
         calorieConsumed: 0,
         mealList: this.mealsList.map((mealDetail: Meal) => {
-          const listId = `${sectionName.toLowerCase().replace(' ', '_')}_${mealDetail.name.toLowerCase().replace(' ', '')}_${mealDetail.cal}`;
+          const listId = `${sectionName.toLowerCase().replace(' ', '_')}_${mealDetail.name.toLowerCase().split(' ').join('')}_${mealDetail.cal}`;
           return {
             name: mealDetail.name,
             cal: +mealDetail.cal,
