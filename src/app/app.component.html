@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="header">
+    <h1>My Daily Calorie Tracker</h1>
+    <h1 id="final_calorie_consumed_message">
+      I, Consumed {{calorieConsumed}}/{{totalCalorie}} Cal Today
+    </h1>
+  </div>
+  <div class="meal-container">
+    <ul class="meal-type" *ngFor="let type of mealSections; let typeIndex = index">
+      {{type.mealSectionName}} ({{type.calorieConsumed}}/{{type.mealCalorieLimit}} Cal)
+      <li *ngFor="let item of type.mealList; let itemIndex = index" id="{{item.id}}"
+      (click)="selectedMeal(typeIndex, item, itemIndex)">
+        {{item.name}} [{{item.cal}} Cal]
+      </li>
+    </ul>
+  </div>
+</div>
